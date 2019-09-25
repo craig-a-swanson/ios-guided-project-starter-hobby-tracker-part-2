@@ -28,9 +28,16 @@ class AddFriendViewController: UIViewController {
     
     // Methods go after viewdidload()
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
+        guard let name = nameTextField.text,
+            let hometown = hometownTextField.text,
+            !name.isEmpty,
+            !hometown.isEmpty else { return }
+        
+        
     }
     
     
