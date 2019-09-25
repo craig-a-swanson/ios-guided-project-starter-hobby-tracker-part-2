@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KpS-0V-rcy">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KpS-0V-rcy">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,18 +17,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kmv-fz-iCO">
-                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="JfE-7U-Owb">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="JfE-7U-Owb" customClass="FriendTableViewCell" customModule="HobbyTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JfE-7U-Owb" id="mpT-oU-tM9">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of hobbies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtp-Sj-Shs">
-                                                    <rect key="frame" x="264" y="19.5" width="96" height="20.5"/>
+                                                    <rect key="frame" x="264" y="20" width="96" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -62,10 +60,17 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="hobbyCountLabel" destination="vtp-Sj-Shs" id="eI0-it-Mda"/>
+                                            <outlet property="hometownLabel" destination="0KL-DW-9Up" id="4Qc-i8-dKf"/>
+                                            <outlet property="nameLabel" destination="var-Ul-nUN" id="9Ve-0j-S3C"/>
                                             <segue destination="ZPY-uv-qpc" kind="show" identifier="ShowFriendDetailSegue" id="UON-2a-Mho"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="YZb-n8-OjH"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="4rt-aL-iiO"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -84,46 +89,49 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Kmv-fz-iCO" id="eBr-wL-9n2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1844" y="685.90704647676171"/>
         </scene>
-        <!--View Controller-->
+        <!--Friend Detail View Controller-->
         <scene sceneID="uHV-AO-zTy">
             <objects>
-                <viewController id="ZPY-uv-qpc" sceneMemberID="viewController">
+                <viewController id="ZPY-uv-qpc" customClass="FriendDetailViewController" customModule="HobbyTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jv0-i3-lPc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AoQ-xl-LqC">
-                                <rect key="frame" x="308" y="136" width="47" height="21"/>
+                                <rect key="frame" x="308" y="116" width="47" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hometown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjV-Kr-qp6">
-                                <rect key="frame" x="280" y="165" width="75" height="18"/>
+                                <rect key="frame" x="280" y="145" width="75" height="18"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hobbies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ES-Q6-7fz">
-                                <rect key="frame" x="20" y="316" width="94.5" height="32"/>
+                                <rect key="frame" x="20" y="296" width="94.5" height="32"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="l3e-6d-XGI">
-                                <rect key="frame" x="20" y="136" width="150" height="150"/>
+                                <rect key="frame" x="20" y="116" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="21d-jn-yjT"/>
                                     <constraint firstAttribute="width" secondItem="l3e-6d-XGI" secondAttribute="height" multiplier="1:1" id="UOH-Kz-Uid"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="List of hobbies" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GK3-fZ-Gs7">
-                                <rect key="frame" x="20" y="356" width="335" height="291"/>
+                                <rect key="frame" x="20" y="336" width="335" height="311"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -149,21 +157,26 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="biL-jJ-aTS"/>
                     </view>
+                    <connections>
+                        <outlet property="hobbyListTextView" destination="GK3-fZ-Gs7" id="O6Q-tB-xRl"/>
+                        <outlet property="hometownLabel" destination="MjV-Kr-qp6" id="oCE-m9-Ldn"/>
+                        <outlet property="nameLabel" destination="AoQ-xl-LqC" id="DWq-53-SrQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPq-ap-jSk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2669.5999999999999" y="685.90704647676171"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Friend View Controller-->
         <scene sceneID="Cz0-Fm-1Hb">
             <objects>
-                <viewController id="0qH-7S-1ft" sceneMemberID="viewController">
+                <viewController id="0qH-7S-1ft" customClass="AddFriendViewController" customModule="HobbyTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qe2-K0-dXV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="SMc-HW-ABe">
-                                <rect key="frame" x="20" y="40" width="335" height="302.5"/>
+                                <rect key="frame" x="20" y="20" width="335" height="322.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Friend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ef7-Uj-omS">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="36"/>
@@ -172,49 +185,52 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FnT-Vy-aoe">
-                                        <rect key="frame" x="0.0" y="52" width="335" height="30"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="0.0" y="52" width="335" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hometown" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sQK-qE-csY">
-                                        <rect key="frame" x="0.0" y="98" width="335" height="30"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="0.0" y="102" width="335" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hobbies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDI-UT-wNr">
-                                        <rect key="frame" x="0.0" y="144" width="335" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="152" width="335" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hobby 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lbs-ap-geO">
-                                        <rect key="frame" x="0.0" y="180.5" width="335" height="30"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="0.0" y="188.5" width="335" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hobby 2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aVF-9t-8ah">
-                                        <rect key="frame" x="0.0" y="226.5" width="335" height="30"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="0.0" y="238.5" width="335" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hobby 3" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fiy-7x-iw9">
-                                        <rect key="frame" x="0.0" y="272.5" width="335" height="30"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="0.0" y="288.5" width="335" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                             </stackView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p37-PB-91K">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="603" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem systemItem="cancel" id="5Ma-jP-GEd"/>
+                                    <barButtonItem systemItem="cancel" id="5Ma-jP-GEd">
+                                        <connections>
+                                            <action selector="cancelTapped:" destination="0qH-7S-1ft" id="4E0-br-s5c"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hm1-7E-Img"/>
-                                    <barButtonItem systemItem="save" id="tRS-Ez-blN"/>
+                                    <barButtonItem systemItem="save" id="tRS-Ez-blN">
+                                        <connections>
+                                            <action selector="saveTapped:" destination="0qH-7S-1ft" id="eR5-CM-Ezc"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -229,6 +245,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d6g-o8-bV2"/>
                     </view>
+                    <connections>
+                        <outlet property="hobby1TextField" destination="lbs-ap-geO" id="z7L-As-603"/>
+                        <outlet property="hobby2TextField" destination="aVF-9t-8ah" id="IXd-5e-q8e"/>
+                        <outlet property="hobby3TextField" destination="fiy-7x-iw9" id="Tk3-vo-8kH"/>
+                        <outlet property="hometownTextField" destination="sQK-qE-csY" id="UCs-1f-myw"/>
+                        <outlet property="nameTextField" destination="FnT-Vy-aoe" id="ZVV-eZ-ac8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEY-21-6oU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -240,7 +263,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KpS-0V-rcy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="qU8-9L-8Xd">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
