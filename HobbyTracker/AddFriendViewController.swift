@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AddFriendDelegate {
+    func friendWasCreated(_ friend: Friend)
+}
+
 class AddFriendViewController: UIViewController {
 
     // Outlets go at the top of class before viewdidload
@@ -37,9 +41,47 @@ class AddFriendViewController: UIViewController {
             !name.isEmpty,
             !hometown.isEmpty else { return }
         
+        var friend = Friend(name: name, hometown: hometown, hobbies: [])
+        
+        if let hobby1 = hobby1TextField.text,
+            !hobby1.isEmpty {
+            friend.hobbies.append(hobby1)
+        }
+        
+        if let hobby2 = hobby1TextField.text,
+            !hobby2.isEmpty {
+            friend.hobbies.append(hobby2)
+        }
+        
+        if let hobby3 = hobby1TextField.text,
+            !hobby3.isEmpty {
+            friend.hobbies.append(hobby3)
+        }
+        
+        // TODO: Send friend through delegate back to table view controller
         
     }
-    
-    
-    
+}
+
+// Using an extension to visually separate this code.
+extension AddFriendViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let text = textField.text,
+            !text.isEmpty {
+            switch textField {
+            case nameTextField:
+                hometownTextField.becomeFirstResponder()
+            case hometownTextField:
+                hobby1TextField.becomeFirstResponder()
+            case hobby1TextField:
+                hobby2TextField.becomeFirstResponder()
+            case hobby2TextField:
+                hobby3TextField.becomeFirstResponder()
+            default:
+                textField.resignFirstResponder()
+            }
+        }
+        
+        return false
+    }
 }
