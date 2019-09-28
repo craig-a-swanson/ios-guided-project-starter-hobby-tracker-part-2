@@ -23,6 +23,8 @@ class AddFriendViewController: UIViewController {
     @IBOutlet weak var hobby2TextField: UITextField!
     @IBOutlet weak var hobby3TextField: UITextField!
     
+    var delegate: AddFriendDelegate?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,8 +60,9 @@ class AddFriendViewController: UIViewController {
             friend.hobbies.append(hobby3)
         }
         
-        // TODO: Send friend through delegate back to table view controller
-        
+        // if there's no delegate, this won't run and the app won't crash.
+        // if there is a delegate, it will pass the friend.
+        delegate?.friendWasCreated(friend)
     }
 }
 

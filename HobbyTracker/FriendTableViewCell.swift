@@ -23,6 +23,9 @@ class FriendTableViewCell: UITableViewCell {
     private func updateViews() {
         guard let friend = friend else { return }
         
+        nameLabel.text = friend.name
+        hometownLabel.text = friend.hometown
+        hobbyCountLabel.text = "\(friend.hobbies.count) hobbies"
     }
     
 }
